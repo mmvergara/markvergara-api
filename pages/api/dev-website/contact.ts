@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     // Create and save message
     const newMessage = new messageModel({ ...message });
     await newMessage.save();
-    if (DISCORD_WEBHOOK_URL) await sendDiscordMessage(message, DISCORD_WEBHOOK_URL);
+    await sendDiscordMessage(message, DISCORD_WEBHOOK_URL);
     return res.status(200).send({ message: "Message sent!" });
   } catch (error) {
     return res.status(400).send({ message: "Error Occured" });
