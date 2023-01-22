@@ -30,6 +30,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     await sendDiscordMessage(message, DISCORD_WEBHOOK_URL);
     return res.status(200).send({ message: "Message sent!" });
   } catch (error) {
+    console.log(error);
     return res.status(400).send({ message: "Error Occured" });
   }
 }
